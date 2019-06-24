@@ -1,5 +1,8 @@
 # Convolutional Neural Network Visualizations
-This repository contains a number of convolutional neural network visualization techniques implemented in PyTorch usign radar data and can be easily adapted to other types of images.
+This repository contains a number of convolutional neural network visualization techniques implemented in PyTorch usign radar data and can be easily adapted.
+
+## General Information 
+The work is show in individual files (ex. vanilla_backprop.py) and is an extension of work done by Utku Ozbulak and Baptist Vandersmissen who work will be published shortly. 
 
 ## Implemented Techniques
 
@@ -35,7 +38,7 @@ Integrated gradients.
 
 [11] M. Sundararajan, A. Taly, Q. Yan. Axiomatic Attribution for Deep Networks https://arxiv.org/abs/1703.01365
 
-# Citation
+### Citation
 This repository is influenced from Utku Ozbulak (https://github.com/utkuozbulak). 
 
 ### More updates to follow. 
