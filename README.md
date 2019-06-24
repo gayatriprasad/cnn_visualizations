@@ -1,7 +1,6 @@
 # Convolutional Neural Network Visualizations
 This repository contains a number of convolutional neural network visualization techniques implemented in PyTorch usign radar data and can be easily adapted.
 
-## General Information 
 The work is show in individual files (ex. vanilla_backprop.py) 
 
 ## Implemented Techniques
