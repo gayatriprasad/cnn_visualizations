@@ -25,19 +25,15 @@ Integrated gradients.
 
 [6] H. Noh, S. Hong, B. Han, Learning Deconvolution Network for Semantic Segmentation https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Noh_Learning_Deconvolution_Network_ICCV_2015_paper.pdf
 
-[7] A. Nguyen, J. Yosinski, J. Clune. Deep Neural Networks are Easily Fooled: High Confidence Predictions for Unrecognizable Images https://arxiv.org/abs/1412.1897
+[7] D. Smilkov, N. Thorat, N. Kim, F. Viégas, M. Wattenberg. SmoothGrad: removing noise by adding noise https://arxiv.org/abs/1706.03825
 
-[8] D. Smilkov, N. Thorat, N. Kim, F. Viégas, M. Wattenberg. SmoothGrad: removing noise by adding noise https://arxiv.org/abs/1706.03825
+[8] D. Erhan, Y. Bengio, A. Courville, P. Vincent. Visualizing Higher-Layer Features of a Deep Network https://www.researchgate.net/publication/265022827_Visualizing_Higher-Layer_Features_of_a_Deep_Network
 
-[9] D. Erhan, Y. Bengio, A. Courville, P. Vincent. Visualizing Higher-Layer Features of a Deep Network https://www.researchgate.net/publication/265022827_Visualizing_Higher-Layer_Features_of_a_Deep_Network
+[9] A. Mordvintsev, C. Olah, M. Tyka. Inceptionism: Going Deeper into Neural Networks https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html
 
-[10] A. Mordvintsev, C. Olah, M. Tyka. Inceptionism: Going Deeper into Neural Networks https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html
+[10] A. Shrikumar, P. Greenside, A. Shcherbina, A. Kundaje. Not Just a Black Box: Learning Important Features Through Propagating Activation Differences https://arxiv.org/abs/1605.01713
 
-[11] I. J. Goodfellow, J. Shlens, C. Szegedy. Explaining and Harnessing Adversarial Examples https://arxiv.org/abs/1412.6572
-
-[12] A. Shrikumar, P. Greenside, A. Shcherbina, A. Kundaje. Not Just a Black Box: Learning Important Features Through Propagating Activation Differences https://arxiv.org/abs/1605.01713
-
-[13] M. Sundararajan, A. Taly, Q. Yan. Axiomatic Attribution for Deep Networks https://arxiv.org/abs/1703.01365
+[11] M. Sundararajan, A. Taly, Q. Yan. Axiomatic Attribution for Deep Networks https://arxiv.org/abs/1703.01365
 
 # Citation
 This repository is influenced from Utku Ozbulak (https://github.com/utkuozbulak). 
