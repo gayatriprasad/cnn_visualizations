@@ -3,10 +3,10 @@ This repository contains a number of convolutional neural network visualization 
 
 ## Implemented Techniques
 
-[1] Gradient visualization with vanilla backpropagation
-[2] Gradient visualization with guided backpropagation
-[3] Smooth grad
-[4] Integrated gradients
+Gradient visualization with vanilla backpropagation.
+Gradient visualization with guided backpropagation.
+Smooth grad.
+Integrated gradients.
 
 More updated to follow. 
 
@@ -38,4 +38,5 @@ More updated to follow.
 
 [13] M. Sundararajan, A. Taly, Q. Yan. Axiomatic Attribution for Deep Networks https://arxiv.org/abs/1703.01365
 
+# Citation
 This repository is influenced from Utku Ozbulak (https://github.com/utkuozbulak). 
