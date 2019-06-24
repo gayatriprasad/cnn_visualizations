@@ -11,8 +11,6 @@ Smooth grad.
 
 Integrated gradients.
 
-More updated to follow. 
-
 ## References:
 
 [1] J. T. Springenberg, A. Dosovitskiy, T. Brox, and M. Riedmiller. Striving for Simplicity: The All Convolutional Net, https://arxiv.org/abs/1412.6806
@@ -43,3 +41,6 @@ More updated to follow.
 
 # Citation
 This repository is influenced from Utku Ozbulak (https://github.com/utkuozbulak). 
+
+# More updates to follow. 
+
