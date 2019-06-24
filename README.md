@@ -7,8 +7,11 @@ The work is show in individual files (ex. vanilla_backprop.py)
 ## Implemented Techniques
 
 Gradient visualization with vanilla backpropagation.
+
 Gradient visualization with guided backpropagation.
+
 Smooth grad.
+
 Integrated gradients.
 
 ## References:
