@@ -130,7 +130,7 @@ if __name__ == '__main__':
         labels), sample_size=sample_sizes[features][1])
     # Load model
     load_checkpoint(
-        net, None, '/home/gp/Documents/radar_stuff/models/gestures_random_nopool_cpu.pt')
+        net, None, '/../data/models/gestures_random_nopool_cpu.pt')
     net.cpu()
     net.eval()
 
