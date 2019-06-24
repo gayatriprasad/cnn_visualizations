@@ -90,10 +90,10 @@ class GuidedBackprop():
 
 if __name__ == '__main__':
     dataset = 'gestures'
-    base_location = '/home/gp/Documents/radar_stuff/radar_data'
-    csv_location = '/home/gp/Documents/radar_stuff/radar_split_csv'
+    base_location = '../data'
+    csv_location = '../data'
     sample_length = 50
-    filename_dataset = '/home/gp/Documents/radar_stuff/radar_split_csv/gestures-random-train.csv'
+    filename_dataset = '../data/gestures-random-train.csv'
     features = 'range_doppler_log'
 
     values = dict()
@@ -134,18 +134,13 @@ if __name__ == '__main__':
     net.cpu()
     net.eval()
 
-    VIS_TARGET_FOLDER = '/home/gp/Documents/results_GBP_random_train_final/'
-    if not os.path.exists('/home/gp/Documents/results_GBP_random_train_final/'):
-        os.makedirs('/home/gp/Documents/results_GBP_random_train_final/')
+    VIS_TARGET_FOLDER = '../results'
+    if not os.path.exists('../results'):
+        os.makedirs('../results')
 
     # frame for padding
     pad_sample, pad_im_label = dataset2[254]
     padding = pad_sample[0][49]
-    # sample_viz, im_label = dataset2[0]
-    # print(net(sample_viz))
-    # print('pad_im_label:', im_label)
-    # print('pad_sample:', pad_sample)
-    print('length of dataset', len(dataset2))
 
     master_logit_diff_list = [0] * 50
     master_magnitude_list = [0] * 50
@@ -160,9 +155,7 @@ if __name__ == '__main__':
     GBP = GuidedBackprop(net)
     sample_amount = len(dataset2)
     for i in range(0, sample_amount):
-        print('Iter:', i)
         sample_id = i
-        # print('sample_id:', sample_id)
         # Get image for forward pass
         gbp_sample, label1 = dataset2[sample_id]
         # making copies for modification
@@ -172,20 +165,14 @@ if __name__ == '__main__':
         print('out', out)
         # current prediction
         org_pred_logit = out[0][label1].item()
-        # print('original_logit', out[0][label1].item())
         # Get gradients
         var_sample_1 = Variable(gbp_sample_copy, requires_grad=True)
         guided_grads = GBP.generate_gradients(var_sample_1, label1)
-        # print('Vanilla_grads_np:', vanilla_grads.shape)
         split_grads_np1 = guided_grads[0]
         split_grads_np1 = np.clip(split_grads_np1, a_min=0, a_max=100000000)
-        # print('split_grads_np:', split_grads_np.shape)
         gbp_magnitude_list = []
         for j in range(0, 50):
-            # Keep this, see if this makes a difference
             gbp_magnitude_list.append(np.linalg.norm(split_grads_np1[j]))
-            # vbp_magnitude_list.append(np.sum(split_grads_np1[j]))
-        # print('vbp_magnitude_list', vbp_magnitude_list)
         logit_difference_list = []
         sorted_logit_list = []
         for single_frame_replace_id in range(0, 50):
@@ -193,80 +180,23 @@ if __name__ == '__main__':
             gbp_sample_copy[0][single_frame_replace_id] = padding
             # Forwad pas with changed frame
             out = net(gbp_sample_copy)
-            # modified_pred_logit = out[0][label1].item()
-            # print('modified_out', out)
-            # print('modified_logit', out[0][label1].item())
             logit_difference = org_pred_logit - out[0][label1].item()
-            # print('single_frame_replace_id:', 'logit_difference:', single_frame_replace_id, logit_difference)
             logit_difference_list.append(logit_difference)
-
-        print()
-        # print('logit_difference_list', logit_difference_list)
-
-        print()
         # Sort logit changes according to grad magnitude, the largest magnitude is the last
         # so the first element is the smallest magnitude ( ascending order )
         sorted_logit_list = [x for _, x in sorted(zip(gbp_magnitude_list, logit_difference_list))]
-        # print()
-        # print('sorted_logit_list', sorted_logit_list)
         master_stddev_logit_list.extend(sorted_logit_list)
-
         master_logit_diff_list = [x + y for x, y in zip(sorted_logit_list, master_logit_diff_list)]
-
-    # print()
-    print('avg_logit_diff_list_len', len(avg_logit_diff_list))
-
     master_stddev_logit_as_np = np.split(np.array(master_stddev_logit_list), sample_amount)
-    # print('master_stddev_logit_as_np', master_stddev_logit_as_np)
     std_dev = np.std(np.vstack(master_stddev_logit_as_np), axis=0)
-    # print()
-    print('standard_deviation_len', std_dev)
-    # avg_magnitude_list to get the change_in_logit-vs-Frame plot (frames in descending order of magnitude)
-    # print('master_logit_diff_list', master_logit_diff_list)
-
     for loc in range(50):
         avg_logit_diff_list = [x / sample_amount for x in master_logit_diff_list]
         master_magnitude_list[loc] = master_magnitude_list[loc] + \
             gbp_magnitude_list[loc]
-
-    print('avg_logit_diff_list', avg_logit_diff_list)
-    print()
     # calcuating the 95 percent confidennce interval
-
     for loc in range(50):
         upper_confidence_list[loc] = avg_logit_diff_list[loc] + \
             std_dev[loc] * (1.96 / np.sqrt(sample_amount))
         lower_confidence_list[loc] = avg_logit_diff_list[loc] - \
             (1.96 / np.sqrt(sample_amount)) * std_dev[loc]
-    # print()
-    # print('standard_deviation', standard_deviation)
-    # avg_magnitude_list to get the change_in_logit-vs-Frame plot (frames in descending order of magnitude)
-
-    print('upper_confidence_list', upper_confidence_list)
-    print()
-    print('lower_confidence_list', lower_confidence_list)
-
-    plt.figure(51)
-    plt.grid(color='grey', linestyle='-', linewidth=0.25, alpha=0.5)
-    plt.plot(avg_logit_diff_list, '-b', label='avg_logit_diff')
-    plt.plot(upper_confidence_list, '-r', label='UCL')
-    plt.plot(lower_confidence_list, '-r', label='LCL')
-    plt.legend(loc='upper left')
-    plt.savefig(VIS_TARGET_FOLDER + 'avg_logit_diff_list_all_train_samples_' + 'GBP_' +
-                ".png", format="PNG")
-
-    plt.figure(52)
-    plt.grid(color='grey', linestyle='-', linewidth=0.25, alpha=0.5)
-    plt.plot(sorted(master_magnitude_list, reverse=True), '-b', label='master_magnitude')
-    plt.legend(loc='upper right')
-    plt.savefig(VIS_TARGET_FOLDER + 'master_magnitude_all_train_samples_' + 'GBP_' +
-                ".png",  format="PNG")
-
-    plt.figure(53)
-    plt.grid(color='grey', linestyle='-', linewidth=0.25, alpha=0.5)
-    plt.plot(master_logit_diff_list, '-b', label='master_logit_diff')
-    plt.legend(loc='upper left')
-    plt.savefig(VIS_TARGET_FOLDER + 'master_logit_diff_list_all_train_samples_' + 'GBP_' +
-                ".png", format="PNG")
-
 print('guided backprop completed')
