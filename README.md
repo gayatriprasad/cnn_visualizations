@@ -4,8 +4,11 @@ This repository contains a number of convolutional neural network visualization 
 ## Implemented Techniques
 
 Gradient visualization with vanilla backpropagation.
+
 Gradient visualization with guided backpropagation.
+
 Smooth grad.
+
 Integrated gradients.
 
 More updated to follow. 
