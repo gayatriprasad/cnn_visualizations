@@ -2,16 +2,13 @@
 This repository contains a number of convolutional neural network visualization techniques implemented in PyTorch usign radar data and can be easily adapted.
 
 ## General Information 
-The work is show in individual files (ex. vanilla_backprop.py) and is an extension of work done by Utku Ozbulak and Baptist Vandersmissen who work will be published shortly. 
+The work is show in individual files (ex. vanilla_backprop.py) 
 
 ## Implemented Techniques
 
 Gradient visualization with vanilla backpropagation.
-
 Gradient visualization with guided backpropagation.
-
 Smooth grad.
-
 Integrated gradients.
 
 ## References:
