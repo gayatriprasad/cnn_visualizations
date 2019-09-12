@@ -1,5 +1,5 @@
 # Convolutional Neural Network Visualizations
-This repository contains a number of convolutional neural network visualization techniques implemented in PyTorch usign radar data and can be easily adapted.
+This repository contains a number of convolutional neural network visualization techniques implemented in PyTorch u
 
 The work is show in individual files (ex. vanilla_backprop.py) 
 
@@ -9,7 +9,7 @@ Gradient visualization with vanilla backpropagation.
 
 Gradient visualization with guided backpropagation.
 
-Smooth grad.
+Smooth gradients.
 
 Integrated gradients.
 
