@@ -5,9 +5,9 @@ The work is show in individual files (ex. vanilla_backprop.py)
 
 ## Implemented Techniques
 
-Gradient visualization with vanilla backpropagation.
+Gradient visualization with Vanilla Backpropagation.
 
-Gradient visualization with guided backpropagation.
+Gradient visualization with Guided Backpropagation.
 
 Gradient visualization with Smooth gradients.
 
@@ -40,5 +40,5 @@ Gradient visualization with Integrated gradients.
 ### Citation
 This repository is influenced from Utku Ozbulak (https://github.com/utkuozbulak). 
 
-### More updates to follow. 
+
 
