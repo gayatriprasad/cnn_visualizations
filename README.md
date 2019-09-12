@@ -9,9 +9,9 @@ Gradient visualization with vanilla backpropagation.
 
 Gradient visualization with guided backpropagation.
 
-Smooth gradients.
+Gradient visualization with Smooth gradients.
 
-Integrated gradients.
+Gradient visualization with Integrated gradients.
 
 ## References:
 
