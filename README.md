@@ -37,8 +37,5 @@ Gradient visualization with Integrated gradients.
 
 [11] M. Sundararajan, A. Taly, Q. Yan. Axiomatic Attribution for Deep Networks https://arxiv.org/abs/1703.01365
 
-#### Citation
-This repository is influenced from Utku Ozbulak (https://github.com/utkuozbulak). 
-
 
 
