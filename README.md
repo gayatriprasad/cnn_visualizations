@@ -1,5 +1,5 @@
 # Convolutional Neural Network Visualizations
-This repository contains a number of convolutional neural network visualization techniques implemented in PyTorch u
+This repository contains a number of convolutional neural network visualization techniques implemented in PyTorch.
 
 The work is shown in individual files (ex. vanilla_backprop.py) 
 
@@ -37,7 +37,7 @@ Gradient visualization with Integrated gradients.
 
 [11] M. Sundararajan, A. Taly, Q. Yan. Axiomatic Attribution for Deep Networks https://arxiv.org/abs/1703.01365
 
-### Citation
+#### Citation
 This repository is influenced from Utku Ozbulak (https://github.com/utkuozbulak). 
 
 
