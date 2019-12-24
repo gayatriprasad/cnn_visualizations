@@ -1,7 +1,7 @@
 # Convolutional Neural Network Visualizations
 This repository contains a number of convolutional neural network visualization techniques implemented in PyTorch u
 
-The work is show in individual files (ex. vanilla_backprop.py) 
+The work is shown in individual files (ex. vanilla_backprop.py) 
 
 ## Implemented Techniques
 
